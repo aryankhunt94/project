@@ -98,7 +98,8 @@ public class AdminController {
 		dbUser.setContactNumber(entity.getContactNumber());
 		dbUser.setBirthDate(entity.getBirthDate());
 		dbUser.setProfilePicPath(entity.getProfilePicPath());
-		
+//		dbUser.setPassword(dbUser.getPassword());
+		dbUser.setRole(entity.getRole());
 
 		
 
@@ -107,17 +108,17 @@ public class AdminController {
 		System.out.println(result);
 		System.out.println(result.get("url"));
 		
-		entity.setProfilePicPath(result.get("url").toString());
+		dbUser.setProfilePicPath(result.get("url").toString());
 		
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		repoUser.save(entity);
+		repoUser.save(dbUser);
 		}
 		
 		
-		return "redirect:/listuser";
+		return "redirect:/listusers";
 	}
 	
 	@GetMapping("fastfood")

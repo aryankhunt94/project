@@ -19,6 +19,7 @@ import project.repository.UserRepository;
 import jakarta.servlet.http.HttpSession;
 
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.cloudinary.Cloudinary;
 import com.cloudinary.utils.ObjectUtils;
@@ -51,7 +52,7 @@ public class SessionController {
 	
 	
 	@PostMapping("saveuser")
-	public String saveUser(UserEntity userEntity,MultipartFile profilePic) {
+	public String saveUser(UserEntity userEntity,MultipartFile profilePic,String password,String confirmPassword,RedirectAttributes redirect) {
 		
 	
 		    System.out.println("Profile Pic Name: " + profilePic.getOriginalFilename());
@@ -69,16 +70,22 @@ public class SessionController {
 			e.printStackTrace();
 		}
 		
-		String encPassword = encoder.encode(userEntity.getPassword());
-		userEntity.setPassword(encPassword);
-		// memory
-		// bcrypt singleton -> single object -> autowired
-
-		userEntity.setRole("USER");
-		repoUser.save(userEntity);
-		// send mail
-		serviceMail.sendWelcomeMail(userEntity.getEmail(), userEntity.getFirstName());
-		return "Login";
+		if(password.equals(confirmPassword)) {			
+			String encPassword = encoder.encode(userEntity.getPassword());
+			userEntity.setPassword(encPassword);
+			// memory
+			// bcrypt singleton -> single object -> autowired
+			
+			userEntity.setRole("USER");
+			repoUser.save(userEntity);
+			// send mail
+			serviceMail.sendWelcomeMail(userEntity.getEmail(), userEntity.getFirstName());
+			return "Login";
+		}
+		else {
+			redirect.addFlashAttribute("error", "not same as password");
+			return "redirect:/signup";
+		}
 	}
 
 	@PostMapping("sendotp")

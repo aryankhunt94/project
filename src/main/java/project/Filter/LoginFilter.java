@@ -38,6 +38,7 @@ public class LoginFilter implements Filter {
         publicURLs.add("/updatepassword");
 
         // Admin URLs
+        adminURL.add("menu");
         adminURL.add("home");
         adminURL.add("admindashboard");
         adminURL.add("listuser");

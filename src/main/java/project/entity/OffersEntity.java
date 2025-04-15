@@ -21,6 +21,7 @@ public class OffersEntity {
 	private String discount;
 	private String validTill;
 	private String description;
+	private String offerType;
 
 	/* private String offerPic; */
 	
@@ -74,6 +75,14 @@ public class OffersEntity {
 	}
 	public void setDescription(String description) {
 		this.description = description;
+	}
+
+	public String getOfferType() {
+		return offerType;
+	}
+
+	public void setOfferType(String offerType) {
+		this.offerType = offerType;
 	}
 
 	

@@ -219,6 +219,12 @@
             <input type="password" id="password" placeholder="Enter your password" name="password" required>
             <i id="pass-toggle-btn" class="fa-solid fa-eye"></i>
         </div>
+        <div class="form-group password">
+            <label for="password">Confirm-Password</label>
+            <input type="password" id="password" placeholder="Enter your password" name="confirmPassword" required>
+            <i id="pass-toggle-btn" class="fa-solid fa-eye"></i>
+            <p style="color:red">${error}</p>
+        </div>
         <div class="form-group date">
             <label for="date">Birth Date</label>
             <input type="date" id="date" name="birthDate" required>

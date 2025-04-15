@@ -426,6 +426,11 @@
                         <input type="password" name="password" class="form-control" placeholder="Enter password">
                     </div>	
                     
+                    <div class="col-md-6">
+                        <label class="form-label"><i class="bi bi-key me-2"></i>Confirm Password</label>
+                        <input type="password" name="confirmPassword" class="form-control" placeholder="Enter confirm password">
+                    </div>	
+                    
                     <div class="col-12 mt-4">
                         <button type="submit" class="btn btn-primary">
                             <i class="bi bi-person-plus me-2"></i>Signup
@@ -478,7 +483,6 @@
                 //     $('.form-notification').slideUp();
                 // }, 5000);
             });
-            
             // Apply staggered animationto form controls
             $('.form-control, .btn, .form-check').each(function(index) {
                 $(this).css({ 
